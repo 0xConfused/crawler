@@ -1,0 +1,315 @@
+{
+  "targetOrigin": "https://www.cheaperinference.com",
+  "generatedAt": "2026-11-04T14:19:14.190Z",
+  "totalApiEndpoints": 4,
+  "apiEndpoints": [
+    {
+      "id": "api_1_l630b",
+      "url": "https://www.cheaperinference.com/gpu",
+      "pathname": "/gpu",
+      "domain": "www.cheaperinference.com",
+      "isSameDomain": true,
+      "method": "GET",
+      "allowedMethods": [
+        "GET"
+      ],
+      "category": "rest",
+      "detectedIn": "data-attr",
+      "sourceUrl": "https://www.cheaperinference.com/gpu",
+      "sourceUrls": [
+        "https://www.cheaperinference.com/gpu"
+      ],
+      "queryParams": [
+        "duration",
+        "gpuCount",
+        "company",
+        "name",
+        "email",
+        "website"
+      ],
+      "possibleParameters": [
+        {
+          "name": "duration",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "source": "observed"
+        },
+        {
+          "name": "gpuCount",
+          "in": "query",
+          "type": "number",
+          "required": true,
+          "source": "observed"
+        },
+        {
+          "name": "company",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "source": "observed"
+        },
+        {
+          "name": "name",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "source": "observed"
+        },
+        {
+          "name": "email",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "source": "observed"
+        },
+        {
+          "name": "website",
+          "in": "query",
+          "type": "string",
+          "required": false,
+          "source": "observed"
+        }
+      ],
+      "possibleQueries": [],
+      "contentType": "text/plain; charset=utf-8",
+      "statusCode": 200,
+      "latencyMs": 165,
+      "responsePreview": "<!DOCTYPE html><!--CMN2_1bvMknOwVBL_DCCq--><html lang=\"en\" class=\"ci-theme __variable_f19fb2\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"preload\" href=\"/_next/static/media/5c309f01fb81f005-s.p.woff2\" as=\"font\" crossorigin=\"\" type=\"font/woff2\"/><link rel=\"preload\" href=\"/_next/static/media/ab8d62e78e2a4017-s.p.woff2\" as=\"font\" crossorigin=\"\" type=\"font/woff2\"/><link rel=\"preload\" as=\"image\" href=\"/brand/ci-horizontal-2026-10-black.svg\"/><link rel=\"preload\" as=\"image\" href=\"/brand/ci-horizontal-2026-10-white.svg\"/><link rel=\"preload\" as=\"image\" imageSrcSet=\"/_next/image?url=%2Fgpus%2Fnvidia-b300-cutout.png&amp;w=640&amp;q=75 640w, /_next/image?url=%2Fgpus%2Fnvidia-b300-cutout.png&amp;w=750&amp;q=75 750w, /_next/image?url=%2Fgpus%2Fnvidia-b300-cutout.png&amp;w=828&amp;q=75 828w, /_next/image?url=%2Fgpus%2Fnvidia-b300-cutout.png&amp;w=1080&amp;q=75 1080w, /_next/image?url=%2Fgpus%2Fnvidia-b300-cutout.png&amp;w=1200&amp;q=75 ",
+      "snippet": "<form aria-labelledby=\"gpu-form-heading\" aria-busy=\"false\"><fieldset class=\"gpus_fields__X8T32\"><legend class=\"gpus_srOnly__19y5k\">Your GPU requirements and contact details</legend><div class=\"gpus_fieldRow__UPwYd\"><div class=\"gpus_field__TjG32\"><label for=\"gpu-duration\">Rental duration <span class=",
+      "firstDiscoveredAt": 1793745360335,
+      "lastQueriedAt": 1793745360515
+    },
+    {
+      "id": "api_2_775s2",
+      "url": "https://www.cheaperinference.com/students/ambassadors",
+      "pathname": "/students/ambassadors",
+      "domain": "www.cheaperinference.com",
+      "isSameDomain": true,
+      "method": "GET",
+      "allowedMethods": [
+        "GET"
+      ],
+      "category": "rest",
+      "detectedIn": "data-attr",
+      "sourceUrl": "https://www.cheaperinference.com/students/ambassadors",
+      "sourceUrls": [
+        "https://www.cheaperinference.com/students/ambassadors"
+      ],
+      "queryParams": [
+        "full_name",
+        "email",
+        "institution",
+        "country",
+        "degree_subject",
+        "graduation_month",
+        "availability",
+        "github_url",
+        "linkedin_url",
+        "portfolio_url",
+        "motivation",
+        "project",
+        "community",
+        "activity",
+        "resume",
+        "enrolled",
+        "contact_consent",
+        "website"
+      ],
+      "possibleParameters": [
+        {
+          "name": "full_name",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "source": "observed"
+        },
+        {
+          "name": "email",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "source": "observed"
+        },
+        {
+          "name": "institution",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "source": "observed"
+        },
+        {
+          "name": "country",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "source": "observed"
+        },
+        {
+          "name": "degree_subject",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "source": "observed"
+        },
+        {
+          "name": "graduation_month",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "source": "observed"
+        },
+        {
+          "name": "availability",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "source": "observed"
+        },
+        {
+          "name": "github_url",
+          "in": "query",
+          "type": "string",
+          "required": false,
+          "source": "observed"
+        },
+        {
+          "name": "linkedin_url",
+          "in": "query",
+          "type": "string",
+          "required": false,
+          "source": "observed"
+        },
+        {
+          "name": "portfolio_url",
+          "in": "query",
+          "type": "string",
+          "required": false,
+          "source": "observed"
+        },
+        {
+          "name": "motivation",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "source": "observed"
+        },
+        {
+          "name": "project",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "source": "observed"
+        },
+        {
+          "name": "community",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "source": "observed"
+        },
+        {
+          "name": "activity",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "source": "observed"
+        },
+        {
+          "name": "resume",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "source": "observed"
+        },
+        {
+          "name": "enrolled",
+          "in": "query",
+          "type": "boolean",
+          "required": true,
+          "source": "observed"
+        },
+        {
+          "name": "contact_consent",
+          "in": "query",
+          "type": "boolean",
+          "required": true,
+          "source": "observed"
+        },
+        {
+          "name": "website",
+          "in": "query",
+          "type": "string",
+          "required": false,
+          "source": "observed"
+        }
+      ],
+      "possibleQueries": [],
+      "contentType": "text/plain; charset=utf-8",
+      "statusCode": 200,
+      "latencyMs": 157,
+      "responsePreview": "<!DOCTYPE html><!--CMN2_1bvMknOwVBL_DCCq--><html lang=\"en\" class=\"ci-theme __variable_f19fb2\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"preload\" href=\"/_next/static/media/5c309f01fb81f005-s.p.woff2\" as=\"font\" crossorigin=\"\" type=\"font/woff2\"/><link rel=\"preload\" href=\"/_next/static/media/ab8d62e78e2a4017-s.p.woff2\" as=\"font\" crossorigin=\"\" type=\"font/woff2\"/><link rel=\"preload\" as=\"image\" href=\"/brand/ci-horizontal-2026-10-black.svg\"/><link rel=\"preload\" as=\"image\" href=\"/brand/ci-horizontal-2026-10-white.svg\"/><link rel=\"preload\" as=\"image\" href=\"/brand/ci-stacked-2026-10-black.svg\"/><link rel=\"preload\" as=\"image\" href=\"/brand/ci-stacked-2026-10-white.svg\"/><link rel=\"stylesheet\" href=\"/_next/static/css/de84ee8fe13b0291.css?dpl=dpl_JCMhMU1fLtuX69Mz7XKwJYjjmkB8\" data-precedence=\"next\"/><link rel=\"stylesheet\" href=\"/_next/static/css/3f09b3cbea612e9c.css?dpl=dpl_JCMhMU1fLtuX69Mz7XKwJYjjmkB8\" data-precedence=\"next\"/><link ",
+      "snippet": "<form novalidate=\"\" class=\"space-y-8\" aria-label=\"Student ambassador application\" aria-busy=\"false\"><div><p class=\"text-xs uppercase text-muted-foreground\">Early applications</p><h2 class=\"mb-3\">Tell us about yourself.</h2><p class=\"text-sm leading-relaxed text-muted-foreground\">A few details, four ",
+      "firstDiscoveredAt": 1793745373607,
+      "lastQueriedAt": 1793745373764
+    },
+    {
+      "id": "api_3_w2ysj",
+      "url": "https://www.cheaperinference.com/login?callbackUrl=%2Fdashboard%2Fkeys",
+      "pathname": "/login",
+      "domain": "www.cheaperinference.com",
+      "isSameDomain": true,
+      "method": "GET",
+      "allowedMethods": [
+        "GET"
+      ],
+      "category": "auth",
+      "detectedIn": "data-attr",
+      "sourceUrl": "https://www.cheaperinference.com/login?callbackUrl=%2Fdashboard%2Fkeys",
+      "sourceUrls": [
+        "https://www.cheaperinference.com/login?callbackUrl=%2Fdashboard%2Fkeys"
+      ],
+      "queryParams": [
+        "callbackUrl"
+      ],
+      "possibleParameters": [],
+      "possibleQueries": [],
+      "contentType": "text/plain; charset=utf-8",
+      "statusCode": 200,
+      "latencyMs": 324,
+      "responsePreview": "<!DOCTYPE html><html lang=\"en\" class=\"ci-theme __variable_f19fb2\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"stylesheet\" href=\"/_next/static/css/de84ee8fe13b0291.css?dpl=dpl_JCMhMU1fLtuX69Mz7XKwJYjjmkB8\" data-precedence=\"next\"/><link rel=\"stylesheet\" href=\"/_next/static/css/3f09b3cbea612e9c.css?dpl=dpl_JCMhMU1fLtuX69Mz7XKwJYjjmkB8\" data-precedence=\"next\"/><link rel=\"stylesheet\" href=\"/_next/static/css/119e2f377c6fc518.css?dpl=dpl_JCMhMU1fLtuX69Mz7XKwJYjjmkB8\" data-precedence=\"next\"/><link rel=\"stylesheet\" href=\"/_next/static/css/9050fc6b5af7bcfd.css?dpl=dpl_JCMhMU1fLtuX69Mz7XKwJYjjmkB8\" data-precedence=\"next\"/><link rel=\"stylesheet\" href=\"/_next/static/css/2e51fbfe97c3b247.css?dpl=dpl_JCMhMU1fLtuX69Mz7XKwJYjjmkB8\" data-precedence=\"next\"/><link rel=\"stylesheet\" href=\"/_next/static/css/59a410430135b1b9.css?dpl=dpl_JCMhMU1fLtuX69Mz7XKwJYjjmkB8\" data-precedence=\"next\"/><link rel=\"stylesheet\" href=\"/_next/static/css/ffbb69343",
+      "snippet": "<form class=\"mt-5 w-full text-left\"><label data-slot=\"label\" class=\"ci-label text-xs font-medium text-muted-foreground\" for=\"login-email\">Email</label><input data-slot=\"input\" data-size=\"default\" class=\"ci-input focus-brand mt-1.5\" id=\"login-email\" type=\"email\" inputmode=\"email\" autocomplete=\"email\"",
+      "firstDiscoveredAt": 1793745396718,
+      "lastQueriedAt": 1793745397052
+    },
+    {
+      "id": "api_4_396bd",
+      "url": "https://www.cheaperinference.com/login?callbackUrl=%2Fdocs%23api-reference",
+      "pathname": "/login",
+      "domain": "www.cheaperinference.com",
+      "isSameDomain": true,
+      "method": "GET",
+      "allowedMethods": [
+        "GET"
+      ],
+      "category": "auth",
+      "detectedIn": "data-attr",
+      "sourceUrl": "https://www.cheaperinference.com/login?callbackUrl=%2Fdocs%23api-reference",
+      "sourceUrls": [
+        "https://www.cheaperinference.com/login?callbackUrl=%2Fdocs%23api-reference"
+      ],
+      "queryParams": [
+        "callbackUrl"
+      ],
+      "possibleParameters": [],
+      "possibleQueries": [],
+      "contentType": "text/plain; charset=utf-8",
+      "statusCode": 200,
+      "latencyMs": 311,
+      "responsePreview": "<!DOCTYPE html><html lang=\"en\" class=\"ci-theme __variable_f19fb2\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"stylesheet\" href=\"/_next/static/css/de84ee8fe13b0291.css?dpl=dpl_JCMhMU1fLtuX69Mz7XKwJYjjmkB8\" data-precedence=\"next\"/><link rel=\"stylesheet\" href=\"/_next/static/css/3f09b3cbea612e9c.css?dpl=dpl_JCMhMU1fLtuX69Mz7XKwJYjjmkB8\" data-precedence=\"next\"/><link rel=\"stylesheet\" href=\"/_next/static/css/119e2f377c6fc518.css?dpl=dpl_JCMhMU1fLtuX69Mz7XKwJYjjmkB8\" data-precedence=\"next\"/><link rel=\"stylesheet\" href=\"/_next/static/css/9050fc6b5af7bcfd.css?dpl=dpl_JCMhMU1fLtuX69Mz7XKwJYjjmkB8\" data-precedence=\"next\"/><link rel=\"stylesheet\" href=\"/_next/static/css/2e51fbfe97c3b247.css?dpl=dpl_JCMhMU1fLtuX69Mz7XKwJYjjmkB8\" data-precedence=\"next\"/><link rel=\"stylesheet\" href=\"/_next/static/css/59a410430135b1b9.css?dpl=dpl_JCMhMU1fLtuX69Mz7XKwJYjjmkB8\" data-precedence=\"next\"/><link rel=\"stylesheet\" href=\"/_next/static/css/ffbb69343",
+      "snippet": "<form class=\"mt-5 w-full text-left\"><label data-slot=\"label\" class=\"ci-label text-xs font-medium text-muted-foreground\" for=\"login-email\">Email</label><input data-slot=\"input\" data-size=\"default\" class=\"ci-input focus-brand mt-1.5\" id=\"login-email\" type=\"email\" inputmode=\"email\" autocomplete=\"email\"",
+      "firstDiscoveredAt": 1793745399241,
+      "lastQueriedAt": 1793745399561
+    }
+  ]
+}

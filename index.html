@@ -1,0 +1,88 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-or-later -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      (function() {
+        if (typeof window !== 'undefined' && window.WebSocket) {
+          var OrigWebSocket = window.WebSocket;
+          function HmrDummySocket() {
+            var target = document.createDocumentFragment();
+            this.addEventListener = target.addEventListener.bind(target);
+            this.removeEventListener = target.removeEventListener.bind(target);
+            this.dispatchEvent = target.dispatchEvent.bind(target);
+            this.readyState = 1;
+            this.OPEN = 1;
+            this.CONNECTING = 0;
+            this.CLOSING = 2;
+            this.CLOSED = 3;
+            var self = this;
+            setTimeout(function() {
+              var ev = new Event('open');
+              self.dispatchEvent(ev);
+              if (typeof self.onopen === 'function') self.onopen(ev);
+            }, 0);
+          }
+          HmrDummySocket.prototype.send = function() {};
+          HmrDummySocket.prototype.close = function() {
+            this.readyState = 3;
+            var ev = new Event('close');
+            this.dispatchEvent(ev);
+            if (typeof self.onclose === 'function') self.onclose(ev);
+          };
+          HmrDummySocket.OPEN = 1;
+          HmrDummySocket.CONNECTING = 0;
+          HmrDummySocket.CLOSING = 2;
+          HmrDummySocket.CLOSED = 3;
+
+          window.WebSocket = function(url, protocols) {
+            var isViteHmr = (typeof protocols === 'string' && protocols === 'vite-hmr') ||
+              (Array.isArray(protocols) && protocols.indexOf('vite-hmr') !== -1);
+            if (isViteHmr) {
+              return new HmrDummySocket();
+            }
+            return new OrigWebSocket(url, protocols);
+          };
+          window.WebSocket.prototype = OrigWebSocket.prototype;
+          window.WebSocket.CONNECTING = 0;
+          window.WebSocket.OPEN = 1;
+          window.WebSocket.CLOSING = 2;
+          window.WebSocket.CLOSED = 3;
+        }
+        window.addEventListener('unhandledrejection', function(event) {
+          if (event && event.reason && (
+            (typeof event.reason.message === 'string' && event.reason.message.indexOf('WebSocket') !== -1) ||
+            (typeof event.reason.stack === 'string' && event.reason.stack.indexOf('@vite/client') !== -1)
+          )) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+          }
+        });
+        window.addEventListener('error', function(event) {
+          if (event && event.message && typeof event.message === 'string' && event.message.indexOf('WebSocket') !== -1) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+          }
+        });
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>./crawler</title>
+    <meta name="description" content="MultiCam Black web directory reconnaissance, same-domain URL extraction, deduplicated hierarchy discovery, and domain intelligence engine." />
+    <meta property="og:title" content="./crawler" />
+    <meta property="og:description" content="MultiCam Black web directory reconnaissance, same-domain URL extraction, deduplicated hierarchy discovery, and domain intelligence engine." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Rubik+Glitch&family=Chakra+Petch:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <link rel="icon" type="image/png" href="./skull-logo.png" />
+    <link rel="apple-touch-icon" href="./skull-logo.png" />
+  </head>
+  <body class="bg-[#0d0d0d] text-[#f0f0f0] min-h-screen antialiased selection:bg-[#c30800] selection:text-[#f3f3f7]">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

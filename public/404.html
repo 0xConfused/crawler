@@ -1,0 +1,20 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-or-later -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>./crawler</title>
+    <script>
+      (function() {
+        var path = window.location.pathname;
+        var search = window.location.search;
+        var hash = window.location.hash;
+        window.location.replace('./' + (search || '') + (hash || ''));
+      })();
+    </script>
+  </head>
+  <body style="background-color: #0d0d0d; color: #f0f0f0; font-family: monospace; padding: 2rem;">
+    <p>Redirecting to ./crawler...</p>
+  </body>
+</html>
