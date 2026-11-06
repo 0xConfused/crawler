@@ -4,7 +4,11 @@ import React from 'react';
 
 const BRAND_NAME = '0xCONFUSED';
 
-export const LocalDownloadFooter: React.FC = () => {
+interface LocalDownloadFooterProps {
+  onOpenLiabilityTerms?: () => void;
+}
+
+export const LocalDownloadFooter: React.FC<LocalDownloadFooterProps> = ({ onOpenLiabilityTerms }) => {
   return (
     <footer
       id="site-footer"
@@ -13,12 +17,21 @@ export const LocalDownloadFooter: React.FC = () => {
       <div className="wrap footer-wrap">
         <div className="footer-primary-row">
           <div className="footer-identity font-mono">
-            <span
-              className="footer-handle font-glitch font-normal cursor-default"
-              title="0xCONFUSED"
+            <a
+              href="https://www.0xconfused.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="no-underline text-inherit inline-block"
+              title="0xCONFUSED (https://www.0xconfused.com/)"
+              aria-label="0xCONFUSED Website"
             >
-              {BRAND_NAME}
-            </span>
+              <span
+                className="footer-handle font-glitch font-normal cursor-pointer"
+                title="0xCONFUSED"
+              >
+                {BRAND_NAME}
+              </span>
+            </a>
             <span className="footer-sep">/</span>
             <span className="footer-name font-mono text-[#f0f0f0]">./crawler</span>
             <span className="footer-sep">//</span>
@@ -26,11 +39,11 @@ export const LocalDownloadFooter: React.FC = () => {
               className="footer-role"
               title="Web Directory Reconnaissance & Domain Intelligence Engine"
             >
-              Web Directory Reconnaissance & Domain Intelligence Engine
+              Web Directory Reconnaissance &amp; Domain Intelligence Engine
             </span>
           </div>
 
-          <div className="footer-links font-mono">
+          <div className="footer-links font-mono flex items-center gap-2">
             <span
               className="footer-spec hover:text-[#8c8c8c] transition-colors cursor-default"
               title="SPDX-License-Identifier: AGPL-3.0-or-later"
@@ -43,4 +56,3 @@ export const LocalDownloadFooter: React.FC = () => {
     </footer>
   );
 };
-

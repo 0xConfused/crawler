@@ -41,6 +41,8 @@ interface CrawlFormProps {
   onParamTabChange?: (tab: 'standard' | 'advanced') => void;
   showAdvanced?: boolean;
   onShowAdvancedChange?: (show: boolean) => void;
+  isTermsAccepted?: boolean;
+  onRequestTerms?: () => void;
 }
 
 export const CrawlForm: React.FC<CrawlFormProps> = ({
@@ -53,6 +55,8 @@ export const CrawlForm: React.FC<CrawlFormProps> = ({
   onParamTabChange,
   showAdvanced: controlledShowAdvanced,
   onShowAdvancedChange,
+  isTermsAccepted = false,
+  onRequestTerms,
 }) => {
   const [internalShowAdvanced, setInternalShowAdvanced] = useState(false);
   const [internalParamTab, setInternalParamTab] = useState<'standard' | 'advanced'>('standard');
@@ -109,6 +113,12 @@ export const CrawlForm: React.FC<CrawlFormProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!isTermsAccepted) {
+      if (onRequestTerms) {
+        onRequestTerms();
+      }
+      return;
+    }
     if (!config.startUrl.trim()) {
       setUrlError('Please enter a target domain or URL to initiate recon.');
       return;
@@ -189,13 +199,41 @@ export const CrawlForm: React.FC<CrawlFormProps> = ({
               <button
                 type="submit"
                 id="form-start-button"
-                className="px-6 py-2.5 rounded-none bg-gradient-to-r from-[#c30800] to-[#770500] hover:from-[#f60a00] hover:to-[#770500] text-[#f3f3f7] text-xs sm:text-sm font-mono font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-2 cursor-pointer shrink-0 border border-[#c30800] shadow-md hover:shadow-lg"
+                disabled={!isTermsAccepted}
+                title={
+                  !isTermsAccepted
+                    ? 'All three authorization and liability checkboxes must be selected to start crawling'
+                    : 'Initiate Recon'
+                }
+                className={`px-6 py-2.5 rounded-none text-xs sm:text-sm font-mono font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-2 shrink-0 border ${
+                  isTermsAccepted
+                    ? 'bg-gradient-to-r from-[#c30800] to-[#770500] hover:from-[#f60a00] hover:to-[#770500] text-[#f3f3f7] cursor-pointer border-[#c30800] shadow-md hover:shadow-lg'
+                    : 'bg-[#1a1a1a] text-[#737373] border-[#2e2e2e] cursor-not-allowed opacity-50'
+                }`}
               >
                 <Play className="w-3.5 h-3.5 fill-current" />
                 INITIATE RECON
               </button>
             )}
           </div>
+
+          {!isTermsAccepted && (
+            <p className="mt-2 text-xs text-[#c36a00] flex items-center gap-1.5 font-mono">
+              <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+              <span>
+                Scope authorization and liability terms must be accepted before scanning.{' '}
+                {onRequestTerms && (
+                  <button
+                    type="button"
+                    onClick={onRequestTerms}
+                    className="underline text-[#f0f0f0] hover:text-[#c30800] cursor-pointer ml-1 font-semibold"
+                  >
+                    Review &amp; Accept Terms
+                  </button>
+                )}
+              </span>
+            </p>
+          )}
 
           {urlError && (
             <p className="mt-2 text-xs text-[#c3005a] flex items-center gap-1.5 font-mono">

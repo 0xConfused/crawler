@@ -269,11 +269,99 @@ header.topbar {
 }
 
 .brand-logo-inner {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100%;
+  overflow: hidden;
+}
+
+/* Subtle CRT Scanlines - constant slow drift masked to image transparency */
+.brand-logo-inner::after,
+.modal-logo-inner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0px,
+    rgba(0, 0, 0, 1) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  opacity: 0.12;
+  z-index: 2;
+  animation: scanline-roll 8s linear infinite;
+  -webkit-mask-image: url("./skull-logo.png");
+  mask-image: url("./skull-logo.png");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+/* Subtle CRT beam sweep overlay - constant slow periodic sweep masked to image transparency */
+.brand-logo-inner::before,
+.modal-logo-inner::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 14px;
+  top: -16px;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(195, 8, 0, 0.10) 50%,
+    transparent
+  );
+  opacity: 0;
+  z-index: 3;
+  animation: crt-sweep-constant 8s ease-in-out infinite;
+  -webkit-mask-image: url("./skull-logo.png");
+  mask-image: url("./skull-logo.png");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+@keyframes scanline-roll {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 48px;
+  }
+}
+
+@keyframes crt-sweep-constant {
+  0% {
+    top: -16px;
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.10;
+  }
+  45% {
+    opacity: 0.10;
+  }
+  55% {
+    top: 68px;
+    opacity: 0;
+  }
+  100% {
+    top: 68px;
+    opacity: 0;
+  }
 }
 
 .brand-logo-inner img {
@@ -301,7 +389,9 @@ header.topbar {
   flex-wrap: wrap;
 }
 
-.brand-glitch-text {
+.brand-glitch-text,
+#brandGlitchText,
+#modalBrandGlitchText {
   font-family: 'Glitch Goblin', 'Rubik Glitch', 'Chakra Petch', monospace;
   font-weight: 400;
   font-size: 25px;
@@ -311,15 +401,51 @@ header.topbar {
   cursor: pointer;
   user-select: none;
   margin: 0;
-  transition: filter 0.15s ease;
+  filter: drop-shadow(0 0 5px rgba(195, 8, 0, 0.35));
 }
 
-.brand-glitch-text:hover {
-  filter: drop-shadow(0 0 8px rgba(195, 8, 0, 0.7));
-}
-
+#brandGlitchText .brand-title,
+#modalBrandGlitchText .brand-title,
 .brand-glitch-text .brand-title {
+  position: relative;
+  display: inline-block;
+  vertical-align: bottom;
   color: var(--color-accent, #c30800);
+  padding: 6px 10px;
+  margin: -6px -10px;
+  text-shadow:
+    0 0 5px rgba(195, 8, 0, 0.55),
+    0 0 10px rgba(195, 8, 0, 0.35);
+  -webkit-mask-image: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0px,
+    rgba(0, 0, 0, 1) 2px,
+    rgba(0, 0, 0, 0.82) 2px,
+    rgba(0, 0, 0, 0.82) 3px
+  );
+  mask-image: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0px,
+    rgba(0, 0, 0, 1) 2px,
+    rgba(0, 0, 0, 0.82) 2px,
+    rgba(0, 0, 0, 0.82) 3px
+  );
+  -webkit-mask-size: 100% 48px;
+  mask-size: 100% 48px;
+  -webkit-mask-repeat: repeat-y;
+  mask-repeat: repeat-y;
+  animation: scanline-mask-roll 8s linear infinite;
+}
+
+@keyframes scanline-mask-roll {
+  0% {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+  100% {
+    -webkit-mask-position: 0 48px;
+    mask-position: 0 48px;
+  }
 }
 
 .brand-mod {

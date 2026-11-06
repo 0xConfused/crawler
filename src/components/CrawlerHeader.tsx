@@ -109,13 +109,26 @@ export const CrawlerHeader: React.FC<CrawlerHeaderProps> = ({
     <header id="crawler-header" className="topbar">
       <div className="topbar-inner">
         <div className="brand">
-          <div className="brand-logo-slot">
-            <div className="brand-logo-inner" aria-hidden="true">
-              <SkullLogo
-                size={64}
-                className="w-16 h-16 object-contain opacity-100"
-              />
-            </div>
+          <div
+            className="brand-logo-slot cursor-pointer"
+            onMouseEnter={handleMouseEnter}
+            title="0xCONFUSED (https://www.0xconfused.com/)"
+          >
+            <a
+              href="https://www.0xconfused.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="brand-logo-link block w-full h-full"
+              title="0xCONFUSED (https://www.0xconfused.com/)"
+              aria-label="0xCONFUSED Website"
+            >
+              <div className="brand-logo-inner" aria-hidden="true">
+                <SkullLogo
+                  size={64}
+                  className="w-16 h-16 object-contain opacity-100"
+                />
+              </div>
+            </a>
           </div>
 
           <div className="brand-text-wrap">
@@ -126,7 +139,16 @@ export const CrawlerHeader: React.FC<CrawlerHeaderProps> = ({
                 data-text="0xCONFUSED"
                 onMouseEnter={handleMouseEnter}
               >
-                <span className="brand-title">{scrambleText}</span>
+                <a
+                  href="https://www.0xconfused.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="no-underline text-inherit inline-block"
+                  title="0xCONFUSED (https://www.0xconfused.com/)"
+                  aria-label="0xCONFUSED Website"
+                >
+                  <span className="brand-title">{scrambleText}</span>
+                </a>
               </h1>
               <span className="brand-mod font-mono">./crawler</span>
             </div>

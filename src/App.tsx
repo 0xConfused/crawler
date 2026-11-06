@@ -28,7 +28,7 @@ import { DirectoryDetailModal } from './components/DirectoryDetailModal';
 import { FileDetailModal } from './components/FileDetailModal';
 import { ExportModal } from './components/ExportModal';
 import { ExternalLinkWarningModal } from './components/ExternalLinkWarningModal';
-import { OwnershipWarningModal } from './components/OwnershipWarningModal';
+import { OwnershipWarningModal, LiabilityAcceptanceRecord } from './components/OwnershipWarningModal';
 import { LocalDownloadFooter } from './components/LocalDownloadFooter';
 import { FolderTree, ListFilter, FileText, ExternalLink, ShieldCheck, Network, Code } from 'lucide-react';
 import { extractApexDomain } from './utils/urlUtils';
@@ -119,7 +119,15 @@ export default function App() {
   const [whoisRefreshKey, setWhoisRefreshKey] = useState<number>(0);
   const [showOwnershipWarning, setShowOwnershipWarning] = useState<boolean>(() => {
     try {
-      return !sessionStorage.getItem('0xconfused_ownership_agreed');
+      const stored = localStorage.getItem('0xconfused_liability_accepted_v2');
+      if (!stored) return true;
+      const parsed = JSON.parse(stored);
+      return !(
+        parsed?.termsVersion === '2026.2' &&
+        parsed?.userAcknowledgment?.ownershipConfirmed === true &&
+        parsed?.userAcknowledgment?.networkTrafficUnderstood === true &&
+        parsed?.userAcknowledgment?.termsAgreed === true
+      );
     } catch {
       return true;
     }
@@ -154,9 +162,9 @@ export default function App() {
     pages,
   });
 
-  const handleAgreeOwnership = () => {
+  const handleAgreeOwnership = (record: LiabilityAcceptanceRecord) => {
     try {
-      sessionStorage.setItem('0xconfused_ownership_agreed', 'true');
+      localStorage.setItem('0xconfused_liability_accepted_v2', JSON.stringify(record));
     } catch {}
     setShowOwnershipWarning(false);
   };
@@ -499,6 +507,11 @@ export default function App() {
   }, []);
 
   const handleStartCrawl = useCallback((overrideUrl?: string) => {
+    if (showOwnershipWarning) {
+      setShowOwnershipWarning(true);
+      return;
+    }
+
     const rawUrl = overrideUrl || config.startUrl;
     if (!rawUrl.trim()) return;
 
@@ -728,6 +741,8 @@ export default function App() {
           onParamTabChange={setParamTab}
           showAdvanced={showAdvanced}
           onShowAdvancedChange={setShowAdvanced}
+          isTermsAccepted={!showOwnershipWarning}
+          onRequestTerms={() => setShowOwnershipWarning(true)}
         />
 
         {/* Live Metrics */}
@@ -961,7 +976,7 @@ export default function App() {
       </main>
 
       {/* Download for Local Use Footer */}
-      <LocalDownloadFooter />
+      <LocalDownloadFooter onOpenLiabilityTerms={() => setShowOwnershipWarning(true)} />
 
       {/* Directory Detail Inspector Modal */}
       {selectedDirectory && (
