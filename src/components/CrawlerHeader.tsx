@@ -112,14 +112,13 @@ export const CrawlerHeader: React.FC<CrawlerHeaderProps> = ({
           <div
             className="brand-logo-slot cursor-pointer"
             onMouseEnter={handleMouseEnter}
-            title="0xCONFUSED (https://www.0xconfused.com/)"
           >
             <a
               href="https://www.0xconfused.com/"
               target="_blank"
               rel="noopener noreferrer"
+              data-bypass-warning="true"
               className="brand-logo-link block w-full h-full"
-              title="0xCONFUSED (https://www.0xconfused.com/)"
               aria-label="0xCONFUSED Website"
             >
               <div className="brand-logo-inner" aria-hidden="true">
@@ -143,8 +142,8 @@ export const CrawlerHeader: React.FC<CrawlerHeaderProps> = ({
                   href="https://www.0xconfused.com/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-bypass-warning="true"
                   className="no-underline text-inherit inline-block"
-                  title="0xCONFUSED (https://www.0xconfused.com/)"
                   aria-label="0xCONFUSED Website"
                 >
                   <span className="brand-title">{scrambleText}</span>

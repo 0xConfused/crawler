@@ -40,8 +40,16 @@ export const ExternalLinkWarningModal: React.FC<ExternalLinkWarningModalProps> =
   try {
     const parsed = new URL(url);
     domain = parsed.hostname;
+    const hostname = parsed.hostname.toLowerCase();
+    if (hostname === '0xconfused.com' || hostname.endsWith('.0xconfused.com')) {
+      return null;
+    }
   } catch {
     domain = url.split('/')[2] || url;
+    const cleanDomain = domain.toLowerCase();
+    if (cleanDomain === '0xconfused.com' || cleanDomain.endsWith('.0xconfused.com')) {
+      return null;
+    }
   }
 
   const handleCopy = () => {
@@ -79,15 +87,10 @@ export const ExternalLinkWarningModal: React.FC<ExternalLinkWarningModalProps> =
         {/* Header Bar */}
         <div className="flex items-center justify-between px-5 py-3.5 bg-[#141414] border-b border-[#770500]/40">
           <div className="flex items-center gap-2.5">
-            <div className="p-1.5 rounded-none bg-[#770500]/20 border border-[#770500]/50 text-[#f3f3f7]">
-              <ShieldAlert className="w-4 h-4 text-[#c3005a]" />
-            </div>
+            <ShieldAlert className="w-4 h-4 text-[#c3005a] shrink-0" />
             <div>
               <h2 id="external-link-modal-title" className="text-xs font-mono font-bold tracking-wider uppercase text-[#f3f3f7] flex items-center gap-2">
                 External Link Warning
-                <span className="tag tag-sm tag-error-outline font-bold">
-                  LEAVING RECON APP
-                </span>
               </h2>
               <p className="text-[10px] text-[#8c8c8c] font-mono">
                 Third-Party Destination Advisory

@@ -21,6 +21,7 @@ export const LocalDownloadFooter: React.FC<LocalDownloadFooterProps> = ({ onOpen
               href="https://www.0xconfused.com/"
               target="_blank"
               rel="noopener noreferrer"
+              data-bypass-warning="true"
               className="no-underline text-inherit inline-block"
               title="0xCONFUSED (https://www.0xconfused.com/)"
               aria-label="0xCONFUSED Website"

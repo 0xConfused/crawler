@@ -189,6 +189,16 @@ export default function App() {
       const href = anchor.href;
       if (/^https?:\/\//i.test(href)) {
         try {
+          const parsed = new URL(href);
+          const hostname = parsed.hostname.toLowerCase();
+          if (hostname === '0xconfused.com' || hostname.endsWith('.0xconfused.com')) {
+            return;
+          }
+        } catch {
+          // ignore
+        }
+
+        try {
           if (sessionStorage.getItem('skip_external_link_warning') === 'true') {
             return;
           }
@@ -906,7 +916,19 @@ export default function App() {
               <ApiEndpointsView
                 apiEndpoints={apiEndpoints}
                 targetDomain={currentDomain}
-                onOpenExternalWarning={(url) => setPendingExternalUrl(url)}
+                onOpenExternalWarning={(url) => {
+                  try {
+                    const parsed = new URL(url);
+                    const hostname = parsed.hostname.toLowerCase();
+                    if (hostname === '0xconfused.com' || hostname.endsWith('.0xconfused.com')) {
+                      window.open(url, '_blank', 'noopener,noreferrer');
+                      return;
+                    }
+                  } catch {
+                    // ignore
+                  }
+                  setPendingExternalUrl(url);
+                }}
                 onUpdateEndpoint={(updated) => {
                   setApiEndpoints((prev) => prev.map((e) => (e.id === updated.id ? updated : e)));
                 }}
