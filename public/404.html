@@ -1,20 +1,39 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-or-later -->
 <!doctype html>
-<html lang="en">
+<html lang="en" style="background-color: #0d0d0d; color: #f0f0f0;">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>./crawler</title>
     <script>
       (function() {
-        var path = window.location.pathname;
-        var search = window.location.search;
-        var hash = window.location.hash;
-        window.location.replace('./' + (search || '') + (hash || ''));
+        var path = window.location.pathname || '/';
+        var search = window.location.search || '';
+        var hash = window.location.hash || '';
+        var host = window.location.hostname || '';
+        var segments = path.split('/').filter(Boolean);
+        var targetBase = host.slice(-10) === '.github.io' && segments.length > 0
+          ? '/' + segments[0] + '/'
+          : '/';
+
+        if (path === targetBase || path === targetBase + 'index.html') {
+          return;
+        }
+
+        try {
+          var lastRedirect = parseInt(sessionStorage.getItem('crawler_404_redirect_ts') || '0', 10);
+          var now = Date.now();
+          if (now - lastRedirect < 3000) {
+            return;
+          }
+          sessionStorage.setItem('crawler_404_redirect_ts', String(now));
+        } catch (e) {}
+
+        window.location.replace(targetBase + search + hash);
       })();
     </script>
   </head>
   <body style="background-color: #0d0d0d; color: #f0f0f0; font-family: monospace; padding: 2rem;">
-    <p>Redirecting to ./crawler...</p>
+    <p>404 // Path not found. <a href="/" style="color: #c30800; text-decoration: underline;">Return to ./crawler</a></p>
   </body>
 </html>
