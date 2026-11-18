@@ -683,7 +683,6 @@ export function isPlatformDevArtifact(urlOrPath: string): boolean {
   if (!urlOrPath) return false;
   const lower = urlOrPath.toLowerCase();
   return (
-    lower.includes('_aistudio') ||
     lower.includes('@vite') ||
     lower.includes('@react-refresh') ||
     lower.includes('__vite_ping') ||

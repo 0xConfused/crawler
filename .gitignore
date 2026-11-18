@@ -1,15 +1,29 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 node_modules/
 build/
 dist/
 coverage/
 .DS_Store
+Thumbs.db
 *.log
-.env*
+.env
+.env.*
 !.env.example
 
-# AI Studio
+# Secrets & Keys
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Platform & Metadata Artifacts
 .aistudio/
 .aistudio*
+*_aistudio*
+**/aistudio/
+.gemini/
+.gemini*
 metadata.json
 firebase-applet-config.json
 firebase_applet_config.xml
